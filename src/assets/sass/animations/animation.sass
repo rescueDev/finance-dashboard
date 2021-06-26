@@ -1,0 +1,18 @@
+// FADE
+.fade-enter-active
+  transition: opacity .5s ease-out
+.fade-leave-active
+  transition: opacity .5s ease-out
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+  opacity: 0
+
+// PAGE-TRANSITION
+.page-enter-active,
+.page-leave-active
+  +transition(transform .6s $cubic_bezier, opacity .3s $cubic_bezier)
+.page-enter
+  +transform(translate3d(0, 40px, 0))
+.page-enter,
+.page-leave-active
+  opacity: 0
+// END PAGE-TRANSITION

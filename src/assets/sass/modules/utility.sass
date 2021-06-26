@@ -1,0 +1,102 @@
+// Text alignments
+.text
+  &-center
+    text-align: center
+  @each $b in sm md lg xl xxl
+    &-#{$b}-center
+      @include media-breakpoint-up(#{$b})
+        text-align: center
+
+    &-right
+      text-align: right
+    &-#{$b}-right
+      @include media-breakpoint-up(#{$b})
+        text-align: right
+
+    &-left
+      text-align: left
+    &-#{$b}-left
+      @include media-breakpoint-up(#{$b})
+        text-align: left
+
+.padding
+  @each $i in 0 10 15 16 20 30 40 50 60 70 80 90 100
+    &-#{$i}
+      padding: $i + px
+
+    &-top-#{$i}
+      padding-top: $i + px
+
+    &-right-#{$i}
+      padding-right: $i + px
+
+    &-bottom-#{$i}
+      padding-bottom: $i + px
+
+    &-left-#{$i}
+      padding-left: $i + px
+
+  @each $i in 0 10 15 16 20 30 40 50 60 70 80 90 100
+    @each $b in xxs xs sm md lg xl xxl
+      +media-breakpoint-up(#{$b})
+        &-#{$b}-#{$i}
+          padding: $i + px
+
+        &-#{$b}-top-#{$i}
+          padding-top: $i + px
+
+        &-#{$b}-right-#{$i}
+          padding-right: $i + px
+
+        &-#{$b}-bottom-#{$i}
+          padding-bottom: $i + px
+
+        &-#{$b}-left-#{$i}
+          padding-left: $i + px
+
+.margin
+  @each $i in 0 10 15 16 20 30 40 50 60 70 80 90 100
+    &-#{$i}
+      margin: $i + px
+
+    &-top-#{$i}
+      margin-top: $i + px
+
+    &-right-#{$i}
+      margin-right: $i + px
+
+    &-bottom-#{$i}
+      margin-bottom: $i + px
+
+    &-left-#{$i}
+      margin-left: $i + px
+
+  @each $i in 0 10 15 16 20 30 40 50 60 70 80 90 100
+    @each $b in xxs xs sm md lg xl xxl
+      +media-breakpoint-up(#{$b})
+        &-#{$b}-#{$i}
+          margin: $i + px
+
+        &-#{$b}-top-#{$i}
+          margin-top: $i + px
+
+        &-#{$b}-right-#{$i}
+          margin-right: $i + px
+
+        &-#{$b}-bottom-#{$i}
+          margin-bottom: $i + px
+
+        &-#{$b}-left-#{$i}
+          margin-left: $i + px
+
+.max
+  width: 100%
+  display: inline-block
+  @each $i in 100 150 200 220 240 250 260 270 280 290 300
+    &-width-#{$i}
+      max-width: $i + px
+
+    @each $b in xxs xs sm md lg xl xxl
+      +media-breakpoint-up(#{$b})
+        &-#{$b}-width-#{$i}
+          max-width: $i + px
