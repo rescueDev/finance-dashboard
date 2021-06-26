@@ -18,7 +18,7 @@
 
 <style lang="sass" scoped>
   .sidebar
-    height: 70vh
+    // height: 70vh
 
     &__top
       display: flex

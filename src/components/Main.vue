@@ -10,7 +10,7 @@
     </div>
     <div class="main__bottom">
       <!-- transactions list slot  -->
-      <slot name="trasactions"></slot>
+      <slot name="transactions"></slot>
     </div>
   </div>
 </template>

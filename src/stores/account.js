@@ -1,4 +1,5 @@
 let account = {
+  namespaced: true,
   state: {
     account: {
       profile: {
@@ -17,6 +18,7 @@ let account = {
         cvc: 123,
         circuit: "Visa",
         balance: 1800689.36,
+        collapse: false,
         transactions: [
           {
             id: 1,
@@ -100,6 +102,12 @@ let account = {
           },
         ],
       },
+    },
+  },
+  mutations: {
+    collapse(state) {
+      // mutate state
+      state.account.card.collapse = !state.account.card.collapse;
     },
   },
 };

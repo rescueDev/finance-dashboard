@@ -47,7 +47,9 @@
     },
     computed: {
       listItems() {
-        return this.items.filter((item, index) => index < 4);
+        return this.$store.state.account.account.card.collapse
+          ? this.items
+          : this.items.filter((item, index) => index < 4);
       },
     },
   };
@@ -63,7 +65,8 @@
         margin-bottom: 30px
 
       &__list
-
+        overflow: auto
+        height: 200px
 
   .transaction
       display: flex

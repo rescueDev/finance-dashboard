@@ -36,10 +36,10 @@
       padding: 30px
 
     &__center
+
       width: 40%
       padding: 30px
       background: #FFFFFF
-      // border: 1px solid gray
 
     &__right
       width: 30%

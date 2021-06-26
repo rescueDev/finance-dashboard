@@ -5,7 +5,7 @@
         <div class="summary__avatar" :style="style" />
         <h3 class="summary__title">Tom Shelby</h3>
       </div>
-      <slot name="toggler"></slot>
+      <slot></slot>
     </div>
     <div class="summary__center">
       <h3 class="summary__center-title">Total balance</h3>
@@ -15,6 +15,10 @@
       <slot name="tabs">Tabs</slot>
     </div>
     <div class="summary__bottom">
+      <div class="summary__controls">
+        <slot name="title"></slot>
+        <slot name="toggler"></slot>
+      </div>
       <slot name="chart"></slot>
     </div>
   </div>
@@ -48,8 +52,8 @@
   .summary
     display: flex
     flex-direction: column
-    height: 100%
     justify-content: space-between
+    height: 100%
 
     &__top
       display: flex
@@ -74,16 +78,20 @@
       font-size: 18px
       color: #4B3153
       font-weight: bold
+    &__icon
+      color: #DCD6DC
+      font-size: 25px
     &__center
         display: flex
         flex-direction: column
         align-items: center
         &-extra
-          display: flex
-          flex-direction: row
-          align-items: center
-          justify-content: space-between
-          width: 100%
+          // display: flex
+          // flex-direction: row
+          // align-items: center
+          // justify-content: space-between
+          // width: 100%
+
 
         &-title
           font-size: 14px
@@ -95,4 +103,10 @@
           letter-spacing: 2px
           color: #493253
     &__bottom
+
+
+    &__controls
+      display: flex
+      justify-content: space-between
+      margin-top: 30px
 </style>

@@ -1,4 +1,5 @@
 let navigation = {
+  namespaced: true,
   state: {
     navigation: [
       {
