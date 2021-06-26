@@ -108,5 +108,6 @@
     &__controls
       display: flex
       justify-content: space-between
+      align-items: center
       margin-top: 30px
 </style>

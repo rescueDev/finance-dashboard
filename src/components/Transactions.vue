@@ -66,7 +66,7 @@
 
       &__list
         overflow: auto
-        height: 200px
+        height: 170px
 
   .transaction
       display: flex

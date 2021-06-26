@@ -31,9 +31,20 @@
             display: false,
           },
           tooltips: {
+            custom: function(tooltip) {
+              if (!tooltip) return;
+              tooltip.displayColors = false;
+            },
+            bodyAlign: "center",
+            backgroundColor: "#ec6813",
+            titleColor: "#FAFAFA",
+
             callbacks: {
-              label: function(tooltipItem) {
-                return tooltipItem.yLabel;
+              label: function(tooltipItem, data) {
+                return "$ " + tooltipItem.yLabel;
+              },
+              title: function() {
+                return;
               },
             },
           },
