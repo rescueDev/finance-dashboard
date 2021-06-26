@@ -26,6 +26,7 @@
     display: flex
     width: 100%
     border-radius: 30px
+    justify-content: center
 
     &__left
       width: 20%
