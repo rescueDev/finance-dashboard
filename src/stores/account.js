@@ -74,7 +74,7 @@ let account = {
             id: 6,
             service: "Youtube",
             date: "22 Apr, 2021",
-            amount: 3,
+            amount: 30,
             icon: require("@/assets/img/netflix.png"),
             type: "outcoming",
             description:

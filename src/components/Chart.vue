@@ -26,7 +26,7 @@
         },
         options: {
           responsive: true,
-          maintainAspectRatio: true,
+          maintainAspectRatio: false,
           legend: {
             display: false,
           },
@@ -40,7 +40,7 @@
             titleColor: "#FAFAFA",
 
             callbacks: {
-              label: function(tooltipItem, data) {
+              label: function(tooltipItem) {
                 return "$ " + tooltipItem.yLabel;
               },
               title: function() {
@@ -87,3 +87,9 @@
     },
   };
 </script>
+
+<style lang="sass" scoped>
+  canvas
+     width: 100% !important
+     height: 300px !important
+</style>

@@ -20,8 +20,9 @@
 
   .container
       width: 100%
-      display: flex
-      align-items: center
+      // display: flex
+      // align-items: center
+      margin: 0 auto
 
       &--small
         width: 80%

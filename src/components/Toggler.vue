@@ -1,14 +1,12 @@
 <template>
-  <div class="toggler">
-    <component
-      class="toggler"
-      :is="type"
-      :class="[style]"
-      @click="$emit('click-toggle')"
-    >
-      {{ text }}
-    </component>
-  </div>
+  <component
+    class="toggler"
+    :is="type"
+    :class="[style]"
+    @click="$emit('click-toggle')"
+  >
+    {{ text }}
+  </component>
 </template>
 
 <script>

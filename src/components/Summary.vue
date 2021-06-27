@@ -10,9 +10,9 @@
     <div class="summary__center">
       <h3 class="summary__center-title">Total balance</h3>
       <h3 class="summary__center-value">${{ card.balance }} $</h3>
-    </div>
-    <div class="summary__center-extra">
-      <slot name="tabs">Tabs</slot>
+      <div class="summary__center-extra">
+        <slot name="tabs">Tabs</slot>
+      </div>
     </div>
     <div class="summary__bottom">
       <div class="summary__controls">
@@ -59,6 +59,7 @@
       display: flex
       align-items: center
       justify-content: space-between
+      margin-bottom: 30px
 
 
     &__info
@@ -86,12 +87,7 @@
         flex-direction: column
         align-items: center
         &-extra
-          // display: flex
-          // flex-direction: row
-          // align-items: center
-          // justify-content: space-between
-          // width: 100%
-
+          margin-top: 30px
 
         &-title
           font-size: 14px
@@ -103,11 +99,12 @@
           letter-spacing: 2px
           color: #493253
     &__bottom
+      margin-top: 20px
+      justify-self: flex-end
 
 
     &__controls
       display: flex
       justify-content: space-between
       align-items: center
-      margin-top: 30px
 </style>
