@@ -48,16 +48,17 @@
       <Summary :card="card" :profile="profile">
         <Toggler icon="fas fa-cog" type="i"></Toggler>
         <template #tabs>
-          <Tabs :items="tabs"> </Tabs>
+          <Tabs :items="tabs"></Tabs>
         </template>
         <template #title>
           <Title title="Activity"></Title>
         </template>
         <template #toggler>
-          <Toggler text="view all" type="span"> </Toggler>
+          <Toggler text="view all" type="span"></Toggler>
         </template>
         <template #chart>
-          <Chart :transactions="transactions"> </Chart>
+          <!-- <Chart :transactions="transactions"> </Chart> -->
+          <LineChart></LineChart>
         </template>
       </Summary>
     </template>
@@ -80,6 +81,7 @@
   import Toggler from "@/components/Toggler.vue";
   import Chart from "@/components/Chart.vue";
   import Tabs from "@/components/Tabs.vue";
+  import LineChart from "@/components/LineChart.vue";
   export default {
     name: "App",
     components: {
@@ -97,6 +99,7 @@
       Toggler,
       Chart,
       Tabs,
+      LineChart,
     },
     data() {
       return {
@@ -113,6 +116,9 @@
         console.log("emit");
         this.$store.commit("account/collapse");
       },
+      switchTab() {
+        this.$store.commit("navigation/switch");
+      },
     },
   };
 </script>
@@ -126,5 +132,4 @@
     display: flex
     align-items: center
     justify-content: center
-    height: 100vh
 </style>

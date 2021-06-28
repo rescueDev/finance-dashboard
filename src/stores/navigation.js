@@ -27,6 +27,12 @@ let navigation = {
         label: "Expence",
       },
     ],
+    tabSelected: "Income",
+  },
+  mutations: {
+    switch(state, value) {
+      state.tabSelected = value;
+    },
   },
 };
 

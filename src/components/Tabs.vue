@@ -5,7 +5,7 @@
       :key="index"
       class="tabs__item"
       :class="[indexSelected === index ? 'tabs__item--active' : '']"
-      @click="selectTab(index)"
+      @click="selectTab(item, index)"
     >
       {{ item.label }}
     </li>
@@ -28,8 +28,10 @@
       };
     },
     methods: {
-      selectTab(index) {
+      selectTab(item, index) {
         this.indexSelected = index;
+        // console.log(item);
+        this.$store.commit("navigation/switch", item.label);
       },
     },
     computed: {},

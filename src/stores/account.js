@@ -24,7 +24,7 @@ let account = {
             id: 1,
             service: "Netflix",
             date: "12 Mar, 2021",
-            amount: 100,
+            amount: 104,
             icon: require("@/assets/img/netflix.png"),
             type: "incoming",
             description:
@@ -44,7 +44,7 @@ let account = {
             id: 3,
             service: "Apple",
             date: "16 Apr, 2021",
-            amount: 100,
+            amount: 80,
             icon: require("@/assets/img/apple.png"),
             type: "incoming",
             description:
@@ -102,6 +102,18 @@ let account = {
           },
         ],
       },
+    },
+  },
+  getters: {
+    income: (state) => {
+      return state.account.card.transactions.filter(
+        (tr) => tr.type === "incoming"
+      );
+    },
+    expense: (state) => {
+      return state.account.card.transactions.filter(
+        (tr) => tr.type === "outcoming"
+      );
     },
   },
   mutations: {

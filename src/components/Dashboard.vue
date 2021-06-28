@@ -17,16 +17,11 @@
   </div>
 </template>
 
-<script>
-  export default {};
-</script>
-
 <style lang="sass" scoped>
   .dashboard
     display: flex
     width: 100%
     border-radius: 30px
-    align-self: stretch
     padding: 20px 0
     justify-content: center
 
@@ -38,7 +33,6 @@
       padding: 30px
 
     &__center
-
       width: 40%
       padding: 30px
       background: #FFFFFF
