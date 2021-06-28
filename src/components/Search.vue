@@ -21,7 +21,8 @@
   .input-icon
       color: #B6B5BA
       position: absolute
-      top: 1em
+      top: 50%
       left: 35%
+      transform: translateY(-50%)
       font-size: 14px
 </style>

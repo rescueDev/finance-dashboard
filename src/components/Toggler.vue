@@ -1,34 +1,38 @@
 <template>
-  <component
+  <!-- <component
     class="toggler"
     :is="type"
     :class="[style]"
     @click="$emit('click-toggle')"
   >
+
     {{ text }}
-  </component>
+  </component> -->
+  <div class="toggler" @click="$emit('click-toggle')">
+    <slot>Default</slot>
+  </div>
 </template>
 
 <script>
   export default {
-    props: {
-      type: {
-        type: String,
-      },
-      icon: {
-        type: String,
-      },
-      text: {
-        type: String,
-      },
-    },
-    computed: {
-      style() {
-        return this.type === "span"
-          ? "toggler--text"
-          : `${this.icon} toggler--icon`;
-      },
-    },
+    // props: {
+    //   type: {
+    //     type: String,
+    //   },
+    //   icon: {
+    //     type: String,
+    //   },
+    //   text: {
+    //     type: String,
+    //   },
+    // },
+    // computed: {
+    //   style() {
+    //     return this.type === "span"
+    //       ? "toggler--text"
+    //       : `${this.icon} toggler--icon`;
+    //   },
+    // },
   };
 </script>
 

@@ -41,7 +41,7 @@
           justify-content: space-between
           margin: 20px 0
       &__info
-          width: 70%
+          width: 60%
           border: 1px solid slategray
           padding: 40px
           color: white

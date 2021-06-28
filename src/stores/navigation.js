@@ -1,7 +1,7 @@
 let navigation = {
   namespaced: true,
   state: {
-    navigation: [
+    menu: [
       {
         label: "Dashboard",
         icon: "fas fa-home",
@@ -19,20 +19,6 @@ let navigation = {
         icon: "far fa-user-circle",
       },
     ],
-    tabs: [
-      {
-        label: "Income",
-      },
-      {
-        label: "Expence",
-      },
-    ],
-    tabSelected: "Income",
-  },
-  mutations: {
-    switch(state, value) {
-      state.tabSelected = value;
-    },
   },
 };
 

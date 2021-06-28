@@ -5,7 +5,7 @@
       <slot name="toggler">toggle</slot>
     </div>
     <ul class="transactions__list">
-      <li v-for="(item, index) in listItems" :key="index" class="transaction">
+      <li v-for="(item, index) in items" :key="index" class="transaction">
         <div class="transaction__info">
           <div
             :style="`background-image: url(${item.icon});`"
@@ -22,7 +22,7 @@
           <h3
             class="transaction__extra-value"
             :style="[
-              item.type === 'incoming'
+              item.type === 'income'
                 ? { color: '#C06462' }
                 : { color: '#9BCF78' },
             ]"
@@ -43,13 +43,6 @@
         default: function() {
           return [];
         },
-      },
-    },
-    computed: {
-      listItems() {
-        return this.$store.state.account.account.card.collapse
-          ? this.items
-          : this.items.filter((item, index) => index < 4);
       },
     },
   };

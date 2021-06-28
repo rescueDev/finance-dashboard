@@ -21,6 +21,7 @@
     // height: 70vh
 
     &__top
+      padding: 10px 0
       display: flex
       align-items: center
       justify-content: flex-start

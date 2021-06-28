@@ -4,9 +4,10 @@
   export default {
     extends: Line,
     mixins: [reactiveProp],
-    props: ["options"],
+    props: ["options", "chartData"],
 
     mounted() {
+      console.log("chartData in chart comp", this.chartData);
       this.renderChart(this.chartData, {
         responsive: true,
         maintainAspectRatio: false,

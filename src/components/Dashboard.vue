@@ -26,7 +26,7 @@
     justify-content: center
 
     &__left
-      width: 20%
+      width: 250px
       background: #FAFAFA
       border-top-left-radius: 30px
       border-bottom-left-radius: 30px

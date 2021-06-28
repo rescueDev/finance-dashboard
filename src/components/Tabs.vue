@@ -4,7 +4,7 @@
       v-for="(item, index) in items"
       :key="index"
       class="tabs__item"
-      :class="[indexSelected === index ? 'tabs__item--active' : '']"
+      :class="[item.selected ? 'tabs__item--active' : '']"
       @click="selectTab(item, index)"
     >
       {{ item.label }}
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+  import { mapGetters } from "vuex";
   export default {
     props: {
       items: {
@@ -23,18 +24,21 @@
       },
     },
     data() {
-      return {
-        indexSelected: 0,
-      };
+      return {};
     },
     methods: {
       selectTab(item, index) {
-        this.indexSelected = index;
-        // console.log(item);
-        this.$store.commit("navigation/switch", item.label);
+        this.$emit("selectTab", index);
       },
     },
-    computed: {},
+    computed: {
+      ...mapGetters({
+        current: ["tabs/current"],
+      }),
+    },
+    mounted() {
+      console.log(this.$store.getters["tabs/current"][0]);
+    },
   };
 </script>
 
