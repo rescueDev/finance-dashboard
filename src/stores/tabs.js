@@ -12,11 +12,6 @@ let tabs = {
         selected: false,
         type: "expense",
       },
-      {
-        label: "Pluto",
-        selected: false,
-        type: "pluto",
-      },
     ],
   },
   mutations: {

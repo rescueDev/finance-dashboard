@@ -23,9 +23,7 @@
         },
       },
     },
-    data() {
-      return {};
-    },
+
     methods: {
       selectTab(item, index) {
         this.$emit("selectTab", index);
@@ -35,9 +33,6 @@
       ...mapGetters({
         current: ["tabs/current"],
       }),
-    },
-    mounted() {
-      console.log(this.$store.getters["tabs/current"][0]);
     },
   };
 </script>

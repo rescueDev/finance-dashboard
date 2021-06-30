@@ -1,6 +1,23 @@
 <template>
   <!-- <Container> -->
   <Dashboard>
+    <template #modal>
+      <transition name="fade">
+        <Modal v-if="modalToggle">
+          <template #title>
+            <Title title="Add new credit card"></Title>
+          </template>
+          <template #toggle>
+            <Toggler @click-toggle="closeModal">
+              <i class="fas fa-times"></i>
+            </Toggler>
+          </template>
+          <template #center>
+            <Form @form-submit="addCC"></Form>
+          </template>
+        </Modal>
+      </transition>
+    </template>
     <template #left>
       <Sidebar>
         <template #logo>
@@ -24,11 +41,14 @@
         </template>
 
         <template #account>
-          <Account :card="card">
+          <Account :card="selectedCard">
             <Title title="Dashboard"></Title>
+            <template #select>
+              <Select :items="cards" @change="changeCard"></Select>
+            </template>
             <template #toggle>
               <!-- <Toggler icon="fas fa-plus" type="i"></Toggler> -->
-              <Toggler>
+              <Toggler @click-toggle="openModal">
                 <i class="toggle-icon fas fa-plus"></i>
               </Toggler>
             </template>
@@ -57,7 +77,7 @@
     </template>
 
     <template #right>
-      <Summary :card="card" :profile="profile">
+      <Summary :card="selectedCard" :profile="profile">
         <!-- <Toggler icon="fas fa-cog" type="i"></Toggler> -->
         <Toggler>
           <i class="toggle-icon fas fa-cog"></i>
@@ -76,7 +96,6 @@
           </Toggler>
         </template>
         <template #chart>
-          <!-- <Chart :transactions="transactions"> </Chart> -->
           <Chart :chart-data="dataChart"></Chart>
         </template>
       </Summary>
@@ -101,7 +120,9 @@
   import Chart from "@/components/Chart.vue";
   import Tabs from "@/components/Tabs.vue";
   import LineChart from "@/components/LineChart.vue";
-  import { mapState } from "vuex";
+  import Modal from "@/components/Modal.vue";
+  import Form from "@/components/Form.vue";
+  import Select from "@/components/Select.vue";
   export default {
     name: "App",
     components: {
@@ -120,57 +141,84 @@
       Chart,
       Tabs,
       LineChart,
+      Modal,
+      Form,
+      Select,
     },
     data() {
       return {
         toggle: false,
         max: 3,
+        modalToggle: false,
       };
     },
     methods: {
       showAll() {
-        console.log("emit toggler");
         this.toggle = !this.toggle;
       },
       selectTab(index) {
         this.$store.commit("tabs/switch", index);
       },
-      fillChart() {},
+      openModal() {
+        this.modalToggle = true;
+      },
+      closeModal() {
+        this.modalToggle = false;
+      },
+      addCC(card) {
+        // console.log(card);
+        this.modalToggle = false;
+        this.$store.commit("account/addCard", card);
+      },
+      changeCard(index) {
+        // console.log(index);
+        this.$store.commit("account/changeCard", index);
+      },
     },
     computed: {
       transactionsWithLimit() {
         return this.toggle
-          ? this.transactions
-          : this.transactions.filter((el, index) => {
+          ? this.transactionsCard
+          : this.transactionsCard.filter((el, index) => {
               if (index < this.max) {
                 return el;
               }
             });
       },
-      currentTransactionType() {
-        return this.$store.getters["tabs/current"][0].type;
-      },
+
       menu() {
         return this.$store.state.navigation.menu;
       },
       tabs() {
         return this.$store.state.tabs.items;
       },
-      card() {
-        return this.$store.state.account.card;
+      cards() {
+        return this.$store.state.account.cards;
+      },
+      selectedCard() {
+        return this.cards.filter((card) => card.selected === true)[0];
+      },
+
+      profile() {
+        return this.$store.state.account.profile;
+      },
+
+      //transactions computed
+
+      currentTransactionType() {
+        return this.$store.getters["tabs/current"][0].type;
       },
       transactions() {
         return this.$store.state.transactions.items;
       },
-      // collapse() {
-      //   return this.$store.state.account.card.collapse;
-      // },
-      profile() {
-        return this.$store.state.account.profile;
-      },
       transactionData() {
-        return this.transactions.filter(
+        return this.transactionsCard.filter(
           (el) => el.type === this.currentTransactionType
+        );
+      },
+      transactionsCard() {
+        return this.$store.state.transactions.items.filter(
+          (tr) => tr.card_id === this.selectedCard.id
         );
       },
       dataChart() {
@@ -187,8 +235,8 @@
             {
               label: "# of Votes",
               data: data,
-              backgroundColor: "rgba(255, 159, 64, 0.2)",
-              borderColor: "rgba(255, 159, 64, 0.2)",
+              backgroundColor: "#F8DBCA",
+              borderColor: "#ec6813",
               borderWidth: 1,
             },
           ],
@@ -202,7 +250,7 @@
     },
 
     mounted() {
-      console.log(this.$store.getters);
+      console.log("This selectedCard computed: ", this.selectedCard);
     },
   };
 </script>

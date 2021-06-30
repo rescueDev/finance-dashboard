@@ -10,7 +10,12 @@
         <h3 class="account__info-title">Total balance</h3>
         <h3 class="account__info-title">{{ card.balance }} $</h3>
       </div>
-      <slot name="toggle">Toggle </slot>
+      <div class="account__extra">
+        <slot name="select">Select</slot>
+      </div>
+      <div class="account__extra-center">
+        <slot name="toggle">Toggle </slot>
+      </div>
     </div>
   </div>
 </template>
@@ -66,4 +71,11 @@
           &-title:last-child
                 font-style: none
                 letter-spacing: 2px
+      &__extra
+        &-top
+          align-self: flex-start
+          justify-self: flex-start
+        &-center
+          justify-self: flex-end
+          align-self: flex-start
 </style>

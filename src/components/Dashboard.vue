@@ -1,5 +1,6 @@
 <template>
   <div class="dashboard">
+    <slot name="modal"></slot>
     <!-- Sidebar -->
     <div class="dashboard__left">
       <slot name="left"></slot>
