@@ -20,7 +20,12 @@
         @click="changeCard(item, item.id)"
       >
         <!-- <div class="item__box"> -->
-        {{ item.circuit }}
+        <span>
+          {{ item.circuit }}
+        </span>
+        <p>
+          {{ item.number }}
+        </p>
         <!-- </div> -->
       </li>
     </ul>
@@ -51,7 +56,7 @@
       },
     },
     mounted() {
-      console.log(this.items);
+      // console.log(this.items);
     },
   };
 </script>
@@ -59,18 +64,26 @@
 <style lang="sass" scoped>
   .select
     width: 100%
-    border: 1px solid red
+    // border: 1px solid red
+
   .items-list
-    border: 1px solid black
+    // border: 1px solid black
     height: 80px
+    width: 150px
     display: flex
-    justify-content: space-around
     align-items: center
-    overflow-y: auto
+    overflow-x: auto
 
   .item
     border: 1px solid purple
     height: 50px
+    width: 100px
     font-size: 12px
-    width: 80px
+    text-align: center
+    margin-right: 10px
+    padding: 2px
+    border-radius:10px
+
+    &:last-child
+      margin-right: 0
 </style>

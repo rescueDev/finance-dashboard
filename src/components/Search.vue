@@ -1,9 +1,30 @@
 <template>
   <div class="search">
-    <input type="text" class="input" placeholder="Search" />
+    <input
+      type="text"
+      class="input"
+      placeholder="Search"
+      v-model="searchInput"
+      @keyup="search"
+    />
     <i class="input-icon fas fa-search"></i>
   </div>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        searchInput: "",
+      };
+    },
+    methods: {
+      search() {
+        this.$emit("search", this.searchInput);
+      },
+    },
+  };
+</script>
 
 <style lang="sass" scoped>
   .search

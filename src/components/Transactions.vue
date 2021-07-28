@@ -5,7 +5,11 @@
       <slot name="toggler">toggle</slot>
     </div>
     <ul class="transactions__list">
-      <li v-for="(item, index) in items" :key="index" class="transaction">
+      <li
+        v-for="(item, index) in transactionsFiltered"
+        :key="index"
+        class="transaction"
+      >
         <div class="transaction__info">
           <div
             :style="`background-image: url(${item.icon});`"
@@ -44,6 +48,21 @@
           return [];
         },
       },
+      search: {
+        type: String,
+      },
+    },
+    computed: {
+      transactionsFiltered() {
+        return this.searchInput !== ""
+          ? this.items.filter((tr) =>
+              tr.service.toLowerCase().startsWith(this.search.toLowerCase())
+            )
+          : this.items;
+      },
+    },
+    mounted() {
+      console.log(this.transactionsFiltered);
     },
   };
 </script>

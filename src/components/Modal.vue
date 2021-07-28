@@ -22,12 +22,14 @@
       width: 700px
       height: 500px
       padding: 20px
-      border: 1px solid blue
+      border: 1px solid orange
       position: absolute
       top: 50%
       left: 50%
       transform: translate(-50%, -50%)
       background:#FAFAFA
+      border-radius: 20px
+      z-index: 999
 
       &__top
         display: flex

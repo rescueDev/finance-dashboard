@@ -18,6 +18,8 @@ let account = {
         number: 50173456778,
         cvc: 123,
         circuit: "Visa",
+        expirationDate: "10/24",
+        type: "visa",
         balance: 1800689.36,
         selected: true,
       },
@@ -26,18 +28,20 @@ let account = {
         number: 7354781246,
         cvc: 123,
         circuit: "Mastercard",
+        expirationDate: "11/21",
+        type: "mastercard",
         balance: 689.36,
         selected: false,
       },
-    ],
-    prova: [
       {
-        id: 1,
-        number: 50173456778,
+        id: 3,
+        number: 354781246,
         cvc: 123,
-        circuit: "Visa",
-        balance: 1800689.36,
-        selected: true,
+        circuit: "Maestro",
+        expirationDate: "07/27",
+        type: "maestro",
+        balance: 689.36,
+        selected: false,
       },
     ],
   },
@@ -51,19 +55,15 @@ let account = {
   },
   mutations: {
     addCard(state, card) {
-      console.log("card in vuex", card);
       return state.cards.push(card);
     },
     changeCard(state, cardId) {
-      state.cards.map((el, index) => {
+      state.cards.map((el) => {
         // card.selected = false;
         Vue.set(el, "selected", false);
       });
 
       state.cards.find((el) => (el.id === cardId ? (el.selected = true) : ""));
-
-      // state.cards[cardId].selected = true;
-      // console.log("in vuex after true selected", state.cards[cardId].selected);
     },
   },
 };

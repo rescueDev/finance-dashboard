@@ -3,7 +3,7 @@
     <div class="input-group">
       <label class="label-input" for="number">Card Number</label>
       <input
-        v-model="card.number"
+        v-model="number"
         class="input"
         type="text"
         name="number"
@@ -14,7 +14,7 @@
     <div class="input-group">
       <label class="label-input" for="expirationDate">Expiration Date</label>
       <input
-        v-model="card.expirationDate"
+        v-model="expirationDate"
         class="input"
         type="month"
         name="expirationDate"
@@ -25,7 +25,7 @@
     <div class="input-group">
       <label class="label-input" for="cvc">Cvc</label>
       <input
-        v-model="card.cvc"
+        v-model="cvc"
         class="input"
         type="text"
         name="cvc"
@@ -35,7 +35,7 @@
     </div>
     <div class="input-group">
       <label class="label-input" for="circuit">Circuit</label>
-      <select v-model="card.circuit" name="circuit" id="circuit">
+      <select v-model="circuit" name="circuit" id="circuit">
         <option value="Visa">Visa</option>
         <option value="Mastercard">Mastercard</option>
         <option value="Maestro">Maestro</option>
@@ -50,21 +50,28 @@
   export default {
     data() {
       return {
-        card: {
-          id: undefined,
-          number: "",
-          expirationDate: "",
-          cvc: "",
-          circuit: "",
-          balance: 0,
-          selected: false,
-        },
+        id: undefined,
+        number: "",
+        expirationDate: "",
+        cvc: "",
+        circuit: "",
+        balance: 0,
+        selected: false,
       };
     },
     methods: {
       addForm() {
-        let card = { ...{}, ...this.card };
-        this.$emit("form-submit", card);
+        // let card = { ...{}, ...this.card };
+        this.$emit("form-submit", {
+          id: this.cardLength + 1,
+          circuit: this.circuit,
+          type: this.circuit.toLowerCase().replace(" ", ""),
+          cvc: this.cvc,
+          number: this.number,
+          balance: 0,
+          expirationsDate: this.expirationDate,
+          select: false,
+        });
       },
     },
     computed: {

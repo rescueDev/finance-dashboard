@@ -31,7 +31,7 @@
     <template #center>
       <Main>
         <template #search>
-          <Search></Search>
+          <Search @search="search"></Search>
         </template>
         <template #icon>
           <!-- <Toggler icon="fas fa-bell" type="i"></Toggler> -->
@@ -41,22 +41,16 @@
         </template>
 
         <template #account>
-          <Account :card="selectedCard">
-            <Title title="Dashboard"></Title>
-            <template #select>
-              <Select :items="cards" @change="changeCard"></Select>
-            </template>
-            <template #toggle>
-              <!-- <Toggler icon="fas fa-plus" type="i"></Toggler> -->
-              <Toggler @click-toggle="openModal">
-                <i class="toggle-icon fas fa-plus"></i>
-              </Toggler>
-            </template>
-          </Account>
+          <transition name="fade" :duration="{ enter: 11500, leave: 18800 }">
+            <Cards v-if="cardTrans" :items="cards" @change="changeCard"></Cards>
+          </transition>
+          <Toggler @click-toggle="openModal">
+            <i class="toggle-icon fas fa-plus"></i>
+          </Toggler>
         </template>
 
         <template #transactions>
-          <Transactions :items="transactionsWithLimit">
+          <Transactions :items="transactionsWithLimit" :search="searchInput">
             <Title title="Transactions"></Title>
             <template #toggler>
               <!-- <Toggler
@@ -123,6 +117,10 @@
   import Modal from "@/components/Modal.vue";
   import Form from "@/components/Form.vue";
   import Select from "@/components/Select.vue";
+  import Cards from "@/components/Cards.vue";
+  import Visa from "@/components/Cards/Visa/Visa.vue";
+  import Mastercard from "@/components/Cards/Mastercard/Mastercard.vue";
+  import Maestro from "@/components/Cards/Maestro/Maestro.vue";
   export default {
     name: "App",
     components: {
@@ -144,12 +142,18 @@
       Modal,
       Form,
       Select,
+      Cards,
+      Visa,
+      Mastercard,
+      Maestro,
     },
     data() {
       return {
         toggle: false,
         max: 3,
         modalToggle: false,
+        searchInput: "",
+        cardTrans: true,
       };
     },
     methods: {
@@ -171,8 +175,21 @@
         this.$store.commit("account/addCard", card);
       },
       changeCard(index) {
-        // console.log(index);
-        this.$store.commit("account/changeCard", index);
+        setTimeout(() => {
+          console.log("timeout");
+          this.cardTrans = !this.cardTrans;
+          console.log(this.cardTrans);
+          this.$store.commit("account/changeCard", index);
+        }, 200);
+        this.cardTrans = !this.cardTrans;
+        console.log(this.cardTrans);
+      },
+      search(ip) {
+        console.log("inputSearch in app", ip);
+        this.searchInput = ip;
+      },
+      fade(value) {
+        this.cardTrans = value;
       },
     },
     computed: {
@@ -250,7 +267,7 @@
     },
 
     mounted() {
-      console.log("This selectedCard computed: ", this.selectedCard);
+      console.log(this.cards);
     },
   };
 </script>
@@ -273,4 +290,11 @@
     .toggle-text
       color: #EC6812
       font-size: 14px
+
+
+    .fade-enter-active, .fade-leave-active
+      transition: opacity .5s
+
+    .fade-enter, .fade-leave-to  .fade-leave-active
+      opacity: 0
 </style>

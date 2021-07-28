@@ -23,6 +23,9 @@
       justify-content: space-between
     &__center
       margin: 40px 0
+      display: flex
+      justify-content: space-between
+      align-items: center
     &__bottom
       margin-top: 30px
 </style>
